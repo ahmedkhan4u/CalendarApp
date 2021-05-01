@@ -77,6 +77,7 @@ public class InsertDataActivity extends AppCompatActivity {
 //                Date date1 = new Date(Long.parseLong(date));
 //                String mDate = dateFormat.format(date1);
 //                showMsg(mDate);
+                //
             }
         });
 
