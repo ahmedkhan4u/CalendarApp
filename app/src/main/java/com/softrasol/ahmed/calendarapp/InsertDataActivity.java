@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -109,8 +110,9 @@ public class InsertDataActivity extends AppCompatActivity {
         boolean result = databaseHelper.insertData(title, description, priority, date);
         if (result == true){
             showMsg("Data Save Successfully");
-            startActivity(new Intent(InsertDataActivity.this, MainActivity.class));
-            finish();
+            Intent intent = new Intent(InsertDataActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }else {
             showMsg("Error Occurred While Saving Data To Database");
         }
@@ -119,5 +121,12 @@ public class InsertDataActivity extends AppCompatActivity {
 
     private void showMsg(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getWindow().setSoftInputMode(WindowManager.
+                LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 }

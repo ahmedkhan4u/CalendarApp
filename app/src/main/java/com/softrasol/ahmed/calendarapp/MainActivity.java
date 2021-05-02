@@ -45,13 +45,21 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab);
         currentDate = new Date();
         date = currentDate.getTime()+"";
+        calendarView.setUseThreeLetterAbbreviation(true);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), InsertDataActivity.class));
+            }
+        });
 
         list = new ArrayList<>();
 
         Cursor res = databaseHelper.getAllData();
 
         if (res.getCount() == 0){
-            showMsg("Failed");
+            showMsg("No events added yet.");
             return;
         }else {
             while (res.moveToNext()){
@@ -111,19 +119,17 @@ public class MainActivity extends AppCompatActivity {
             }
 
             filterDate();
+            deleteDatesPassedData();
 
         }
 
         onDateSelectedChanged();
 
-        deleteDatesPassedData();
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, InsertDataActivity.class));
-            }
-        });
+    }
+
+    private void sortData() {
+
     }
 
     private void deleteDatesPassedData() {

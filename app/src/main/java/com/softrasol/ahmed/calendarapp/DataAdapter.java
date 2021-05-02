@@ -51,7 +51,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             holder.cardView.setCardBackgroundColor(Color.RED);
         }
         if (model.getPriority().equals("2")){
-            holder.cardView.setCardBackgroundColor(Color.DKGRAY);
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#2196F3"));
         }
         if (model.getPriority().equals("3")){
             holder.cardView.setCardBackgroundColor(Color.GRAY);
