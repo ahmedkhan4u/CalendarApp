@@ -81,19 +81,6 @@ public class MainActivity extends AppCompatActivity {
                         temp.add(list.get(i));
                         list.set(i, list.get(j));
                         list.set(j, temp.get(0));
-
-                        Date d1, d2;
-                        d1 = new Date(Long.parseLong(list.get(i).getDate()));
-                        d2 = new Date(Long.parseLong(list.get(j).getDate()));
-                        Log.d("dxd ", d1.getDay() + " "+ d2.getDay());
-                        if(d1.getDay() == d2.getDay()
-                                && Integer.parseInt(list.get(i).getPriority()) > Integer.parseInt(list.get(j).getPriority())
-                        ){
-                            Log.d("dxdiag", "Priority : "+ Long.parseLong(list.get(i).getDate()) + " = " +Long.parseLong(list.get(j).getDate()));
-                            temp.add(list.get(i));
-                            list.set(i, list.get(j));
-                            list.set(j, temp.get(0));
-                        }
                     }
                 }
 
@@ -103,11 +90,14 @@ public class MainActivity extends AppCompatActivity {
             for (int i=0; i< list.size(); i++){
                 for (int j=i+1; j<list.size(); j++){
                     temp2.clear();
-                    Date d1, d2;
-                    d1 = new Date(Long.parseLong(list.get(i).getDate()));
-                    d2 = new Date(Long.parseLong(list.get(j).getDate()));
-                    Log.d("dxd ", d1.getDay() + " "+ d2.getDay());
-                    if(d1.getDay() == d2.getDay()
+
+                    Date d1 = new Date(Long.parseLong(list.get(i).getDate()));
+                    Date d2 = new Date(Long.parseLong(list.get(j).getDate()));
+                    String date1 = d1.toGMTString();
+                    String date2 = d2.toGMTString();
+                    Log.d("dxd ", date1.substring(0,2) + " = "+ d2.toGMTString());
+
+                    if(date1.substring(0,2).equalsIgnoreCase(date2.substring(0,2))
                             && Integer.parseInt(list.get(i).getPriority()) > Integer.parseInt(list.get(j).getPriority())
                     ){
                         temp2.add(list.get(i));
