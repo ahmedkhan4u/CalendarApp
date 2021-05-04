@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Date currentDate;
     private FloatingActionButton fab;
     private TextView mCalendarTitle;
+    private RelativeLayout mTxtEvents;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView);
         calendarView = findViewById(R.id.calendarView);
         mCalendarTitle = findViewById(R.id.calenderTitle);
+        mTxtEvents = findViewById(R.id.txtNoEventsFound);
         fab = findViewById(R.id.fab);
         currentDate = new Date();
         date = currentDate.getTime()+"";
         calendarView.setUseThreeLetterAbbreviation(true);
         DateFormat format = new SimpleDateFormat("MMM");
         mCalendarTitle.setText(format.format(calendarView.getFirstDayOfCurrentMonth()));
+        calendarView.shouldSelectFirstDayOfMonthOnScroll(false);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
         DataAdapter adapter = new DataAdapter(dataModelList, this);
         mRecyclerView.setAdapter(adapter);
         if (adapter.getItemCount() == 0){
-            showMsg("No events found.");
+            mTxtEvents.setVisibility(View.VISIBLE);
+        }else {
+            mTxtEvents.setVisibility(View.GONE);
         }
 
         mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

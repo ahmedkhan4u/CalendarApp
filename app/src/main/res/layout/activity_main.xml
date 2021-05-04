@@ -34,13 +34,30 @@
         app:compactCalendarTextSize="12sp"
         app:compactCalendarBackgroundColor="#0c74D5"
         app:compactCalendarTextColor="#fff"
-        
+
         app:compactCalendarCurrentSelectedDayBackgroundColor="#fff"
         app:compactCalendarCurrentSelectedDayTextColor="#0c74D5"
-        app:compactCalendarCurrentDayBackgroundColor="#fff"
-        app:compactCalendarCurrentDayTextColor="#0c74D5"
+        app:compactCalendarCurrentDayBackgroundColor="#0c74D5"
+        app:compactCalendarCurrentDayTextColor="#fff"
         app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/calendarView"
+        android:id="@+id/txtNoEventsFound"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:textSize="18sp"
+            android:text="No Events"
+            />
+
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

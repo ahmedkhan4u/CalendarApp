@@ -29,8 +29,8 @@ public class InsertDataActivity extends AppCompatActivity {
     private Button mBtnSave;
     private String date, priority, title, description;
 
-    private String[] items = {"Choose Priority","1","2","3"};
-    private String[] itemsData = {"Choose Priority","High","Medium","Low"};
+    private String[] items = {"Choose Priority","1","2"};
+    private String[] itemsData = {"Choose Priority","High","Medium"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class InsertDataActivity extends AppCompatActivity {
         mTxtTitle = findViewById(R.id.txtTitle);
         mTxtDescription = findViewById(R.id.txtDescription);
         mBtnSave = findViewById(R.id.btnSave);
-
+        calendarView.setMinDate(System.currentTimeMillis());
         mBtnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
