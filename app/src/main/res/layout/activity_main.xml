@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/title"
-        android:background="@color/color_primary"
+        android:background="#0c74D5"
         android:layout_height="50dp">
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         app:compactCalendarTextSize="12sp"
         app:compactCalendarBackgroundColor="@color/color_primary"
         app:compactCalendarTextColor="#fff"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#717171"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#6E6E6E"
         app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
         app:compactCalendarEventIndicatorStyle="no_fill_large_indicator"
         />
