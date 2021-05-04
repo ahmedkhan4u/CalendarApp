@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     Date d2 = new Date(Long.parseLong(list.get(j).getDate()));
                     String date1 = d1.toGMTString();
                     String date2 = d2.toGMTString();
-                    Log.d("dxd ", date1.substring(0,2) + " = "+ d2.toGMTString());
+                    Log.d("dxd ", date1 + " = "+ date2);
 
                     if(date1.substring(0,2).equalsIgnoreCase(date2.substring(0,2))
                             && Integer.parseInt(list.get(i).getPriority()) > Integer.parseInt(list.get(j).getPriority())
