@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -20,6 +21,7 @@ import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private String date;
     private Date currentDate;
     private FloatingActionButton fab;
+    private TextView mCalendarTitle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,10 +45,13 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         mRecyclerView = findViewById(R.id.recyclerView);
         calendarView = findViewById(R.id.calendarView);
+        mCalendarTitle = findViewById(R.id.calenderTitle);
         fab = findViewById(R.id.fab);
         currentDate = new Date();
         date = currentDate.getTime()+"";
         calendarView.setUseThreeLetterAbbreviation(true);
+        DateFormat format = new SimpleDateFormat("MMM");
+        mCalendarTitle.setText(format.format(calendarView.getFirstDayOfCurrentMonth()));
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,16 +200,10 @@ public class MainActivity extends AppCompatActivity {
             public void onMonthScroll(Date firstDayOfNewMonth) {
                 date = firstDayOfNewMonth.getTime() + "";
                 filterDate();
+                DateFormat format = new SimpleDateFormat("MMM");
+                mCalendarTitle.setText(format.format(firstDayOfNewMonth));
             }
         });
-//        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-//            @Override
-//            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-//                Calendar c = Calendar.getInstance();
-//                c.set(i, i1, i2);
-
-//            }
-//        });
     }
 
     private void showMsg(String msg){
