@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Date currentDate;
     private FloatingActionButton fab;
     private TextView mCalendarTitle;
-    private RelativeLayout mTxtEvents;
+    private RelativeLayout mTxtEvents;//lklkl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
